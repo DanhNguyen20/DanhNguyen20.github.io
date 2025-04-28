@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang HTML Cơ Bản</title>
+</head>
+<body>
+
+    <header>
+        <h1>Chào mừng đến với Website của tôi</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#about">Giới thiệu</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h2>Phần Trang Chủ</h2>
+        <p>Đây là trang chủ của website. Bạn có thể thêm nhiều nội dung ở đây.</p>
+    </section>
+
+    <section id="about">
+        <h2>Phần Giới Thiệu</h2>
+        <p>Phần này có thể mô tả về website của bạn hoặc chính bạn.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Phần Liên Hệ</h2>
+        <p>Ở đây bạn có thể thêm thông tin liên hệ hoặc một mẫu liên hệ.</p>
+    </section>
+
+    <footer>
+        <p>© 2025 Website của tôi. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+</body>
+</html>
