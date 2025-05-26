@@ -19,43 +19,54 @@
       line-height: 1.6;
     }
 
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .header {
-      background-color: #334155;
-      color: #e0e7ff;
-      padding: 20px 0;
+    .header-image {
+      position: relative;
+      background-image: url('https://metricleo.com/wp-content/uploads/2018/07/pexels-photo-1217327.jpeg'); /* Thay ảnh nếu cần */
+      background-size: cover;
+      background-position: center;
+      height: 300px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
     }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
+    .header-overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      text-align: center;
+      border-radius: 12px;
+    }
+
+    .header-title {
       color: #fbbf24;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
     }
 
-    nav ul {
+    .nav-links {
       list-style: none;
       display: flex;
       gap: 25px;
+      justify-content: center;
     }
 
-    nav ul li a {
-      color: #e0e7ff;
+    .nav-links li a {
+      color: #ffffff;
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s ease;
     }
 
-    nav ul li a:hover,
-    nav ul li a.active {
+    .nav-links li a:hover,
+    .nav-links li a.active {
       color: #fbbf24;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
     .hero {
@@ -79,7 +90,6 @@
       color: #475569;
     }
 
-    /* Form email */
     .email-form {
       margin-top: 20px;
     }
@@ -175,9 +185,10 @@
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <h1 class="logo">Nguyễn Thành Danh</h1>
+  <!-- Header với ảnh nền -->
+  <header class="header-image">
+    <div class="header-overlay">
+      <h1 class="header-title">Nguyễn Thành Danh</h1>
       <nav>
         <ul class="nav-links">
           <li><a href="trangchu.html" class="active">Trang Chủ</a></li>
@@ -188,6 +199,7 @@
     </div>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
     <div class="container">
       <h2>Biến những bức ảnh của bạn thành tác phẩm nghệ thuật</h2>
@@ -201,14 +213,13 @@
     </div>
   </section>
 
+  <!-- About -->
   <section class="about container">
     <h2>Giới thiệu về chỉnh sửa ảnh</h2>
 
     <div class="image-wrapper">
-      <img 
-        src="https://imgv3.fotor.com/images/side/Make-AI-photo-color-corection-with-Fotor.jpg"
-        alt="Ảnh minh họa cho chỉnh sửa và ghép ảnh" 
-      />
+      <img src="https://imgv3.fotor.com/images/side/Make-AI-photo-color-corection-with-Fotor.jpg"
+           alt="Ảnh minh họa cho chỉnh sửa và ghép ảnh" />
     </div>
 
     <div class="intro-box">
@@ -231,11 +242,10 @@
       <h3>Retouch chân dung</h3>
       <p>Làm đẹp chân dung chuyên nghiệp, làm mịn da, chỉnh sửa ánh sáng để bạn luôn tự tin với bức ảnh của mình.</p>
     </div>
-    <p>
-      Với sự am hiểu sâu sắc về Photoshop và Lightroom, tôi cam kết mang lại sản phẩm chất lượng cao, đúng yêu cầu và kịp thời.
-    </p>
+    <p>Với sự am hiểu sâu sắc về Photoshop và Lightroom, tôi cam kết mang lại sản phẩm chất lượng cao, đúng yêu cầu và kịp thời.</p>
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 Nguyễn Thành Danh. Bản quyền được bảo lưu.</p>
