@@ -7,155 +7,86 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
       font-family: 'Montserrat', sans-serif;
     }
-
     body {
       background-color: #f0f4f8;
       color: #374151;
       line-height: 1.6;
     }
-
     .container {
-      width: 90%;
       max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 0;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(51, 65, 85, 0.1);
     }
-
-    .header {
+    header {
       background-color: #334155;
       color: #e0e7ff;
       padding: 20px 0;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
-
     .logo {
+      margin-left: 20px;
       font-size: 1.8rem;
       font-weight: 700;
-      margin-left: 20px;
       color: #fbbf24;
     }
-
     nav ul {
       list-style: none;
       display: flex;
       gap: 25px;
       margin-right: 20px;
     }
-
     nav ul li a {
       color: #e0e7ff;
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s ease;
     }
-
     nav ul li a:hover,
     nav ul li a.active {
       color: #fbbf24;
     }
-
     h2 {
       color: #1e293b;
       margin-bottom: 15px;
       text-align: center;
       font-size: 2rem;
     }
-
-    .content {
-      background-color: #ffffff;
-      padding: 30px 20px;
-      box-shadow: 0 4px 15px rgba(51, 65, 85, 0.1);
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-
-    .content p,
-    .content ul {
+    p, ul {
       color: #475569;
       font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 20px auto;
     }
-
-    .content ul {
+    ul {
       list-style: disc inside;
-      margin: 15px 0 25px 0;
     }
-
-    .content ul li {
+    ul li {
       margin-bottom: 10px;
     }
-
-    .footer {
+    footer {
       background-color: #334155;
       color: #e0e7ff;
+      text-align: center;
       padding: 20px 0;
-      text-align: center;
+      margin-top: 60px;
       font-size: 0.9rem;
-      margin-top: 40px;
-    }
-
-    .email-subscribe {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: #ffffff;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(51, 65, 85, 0.1);
-      border-radius: 8px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .email-subscribe label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: 600;
-      color: #1e293b;
-      font-size: 1.1rem;
-    }
-
-    .email-subscribe input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 4px;
-      border: 2px solid #fbbf24;
-      font-size: 1rem;
-      outline: none;
-    }
-
-    .email-subscribe input[type="email"]:focus {
-      border-color: #eab308;
-    }
-
-    .email-subscribe button {
-      background-color: #fbbf24;
-      color: #1e293b;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 4px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-size: 1rem;
-    }
-
-    .email-subscribe button:hover {
-      background-color: #eab308;
     }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container">
+  <header>
+    <div class="container" style="display:flex; justify-content: space-between; align-items: center;">
       <h1 class="logo">Nguyễn Thành Danh</h1>
       <nav>
-        <ul class="nav-links">
+        <ul>
           <li><a href="trangchu.html">Trang Chủ</a></li>
           <li><a href="thongtin.html" class="active">Thông Tin</a></li>
           <li><a href="dichvu.html">Dịch Vụ</a></li>
@@ -164,39 +95,23 @@
     </div>
   </header>
 
-  <section class="container">
+  <main class="container">
     <h2>Thông Tin Về Chỉnh Sửa Ảnh</h2>
+    <p>Chỉnh sửa ảnh là nghệ thuật biến những bức ảnh bình thường trở nên sống động và ấn tượng hơn bằng cách cải thiện ánh sáng, màu sắc và loại bỏ các khuyết điểm.</p>
+    <p>Với kỹ thuật chuyên nghiệp trong Photoshop và Lightroom, chỉnh sửa ảnh giúp nâng cao chất lượng hình ảnh, làm nổi bật chủ thể và tạo ra những tác phẩm nghệ thuật độc đáo.</p>
+    <h3>Tại sao nên chọn dịch vụ chỉnh sửa ảnh chuyên nghiệp?</h3>
+    <ul>
+      <li>Chất lượng ảnh được cải thiện rõ rệt, tỉ mỉ từng chi tiết.</li>
+      <li>Hình ảnh trông tự nhiên và thu hút hơn.</li>
+      <li>Giúp ảnh phù hợp với mục đích sử dụng đa dạng như cá nhân, thương mại, sự kiện.</li>
+      <li>Tiết kiệm thời gian và công sức tự chỉnh sửa.</li>
+      <li>Đảm bảo sự hài lòng và chỉnh sửa theo yêu cầu riêng biệt.</li>
+    </ul>
+    <p>Nếu bạn muốn có những bức ảnh đẹp và chuyên nghiệp, hãy lựa chọn dịch vụ chỉnh sửa ảnh chất lượng từ chuyên gia!</p>
+  </main>
 
-    <div class="email-subscribe">
-      <form action="#" method="post" novalidate>
-        <label for="email">Đăng ký nhận thông tin mới nhất qua email</label>
-        <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required />
-        <button type="submit">Đăng ký</button>
-      </form>
-    </div>
-
-    <div class="content">
-      <p>Chỉnh sửa ảnh là nghệ thuật biến những bức ảnh bình thường trở nên sống động và ấn tượng hơn bằng cách cải thiện ánh sáng, màu sắc và loại bỏ các khuyết điểm.</p>
-
-      <p>Với kỹ thuật chuyên nghiệp trong Photoshop và Lightroom, chỉnh sửa ảnh giúp nâng cao chất lượng hình ảnh, làm nổi bật chủ thể và tạo ra những tác phẩm nghệ thuật độc đáo.</p>
-
-      <h3>Tại sao nên chọn dịch vụ chỉnh sửa ảnh chuyên nghiệp?</h3>
-      <ul>
-        <li>Chất lượng ảnh được cải thiện rõ rệt, tỉ mỉ từng chi tiết.</li>
-        <li>Hình ảnh trông tự nhiên và thu hút hơn.</li>
-        <li>Giúp ảnh phù hợp với mục đích sử dụng đa dạng như cá nhân, thương mại, sự kiện.</li>
-        <li>Tiết kiệm thời gian và công sức tự chỉnh sửa.</li>
-        <li>Đảm bảo sự hài lòng và chỉnh sửa theo yêu cầu riêng biệt.</li>
-      </ul>
-
-      <p>Nếu bạn muốn có những bức ảnh đẹp và chuyên nghiệp, hãy lựa chọn dịch vụ chỉnh sửa ảnh chất lượng từ chuyên gia!</p>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Nguyễn Thành Danh. Bản quyền được bảo lưu.</p>
-    </div>
+  <footer>
+    <p>&copy; 2025 Nguyễn Thành Danh. Bản quyền được bảo lưu.</p>
   </footer>
 </body>
 </html>
