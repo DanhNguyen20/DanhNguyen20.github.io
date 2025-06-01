@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dịch Vụ - Nguyễn Thành Danh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #f0f4f8;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background-color: #1e293b;
+      color: #e0e7ff;
+      padding: 20px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-left: 10px;
+      color: #fbbf24;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #e0e7ff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #fbbf24;
+    }
+
+    main {
+      background-color: #ffffff;
+      padding: 50px 20px;
+      margin: 40px 0;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      border-radius: 12px;
+    }
+
+    main h2 {
+      color: #1e293b;
+      margin-bottom: 40px;
+      text-align: center;
+      font-size: 2.2rem;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .service-box {
+      background: #f9fafb;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #e2e8f0;
+    }
+
+    .service-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+
+    .service-box i {
+      font-size: 2.5rem;
+      color: #fbbf24;
+      margin-bottom: 15px;
+    }
+
+    .service-box h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: #1e293b;
+    }
+
+    .service-box p {
+      font-size: 1rem;
+      color: #475569;
+    }
+
+    /* Contact Form */
+    form.contact-form {
+      max-width: 500px;
+      margin: 60px auto 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    form.contact-form h2 {
+      color: #1e293b;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    form.contact-form label {
+      font-weight: 600;
+      color: #1e293b;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    form.contact-form input[type="text"],
+    form.contact-form input[type="email"],
+    form.contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 2px solid #fbbf24;
+      border-radius: 6px;
+      background-color: #f9fafb;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    form.contact-form input:focus,
+    form.contact-form textarea:focus {
+      border-color: #eab308;
+      outline: none;
+    }
+
+    form.contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    form.contact-form button {
+      background-color: #fbbf24;
+      color: #1e293b;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    form.contact-form button:hover {
+      background-color: #eab308;
+    }
+
+    .footer {
+      background-color: #1e293b;
+      color: #e0e7ff;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .header .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">Nguyễn Thành Danh</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="trangchu.html">Trang Chủ</a></li>
+          <li><a href="thongtin.html">Thông Tin</a></li>
+          <li><a href="dichvu.html" class="active">Dịch Vụ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Dịch Vụ Cung Cấp</h2>
+
+    <section class="services">
+      <div class="service-box">
+        <i class="fas fa-user-edit"></i>
+        <h3>Chỉnh Sửa Ảnh Chân Dung</h3>
+        <p>Làm mịn da, điều chỉnh ánh sáng, loại bỏ khuyết điểm mà vẫn giữ nét tự nhiên.</p>
+      </div>
+      <div class="service-box">
+        <i class="fas fa-box-open"></i>
+        <h3>Xử Lý Ảnh Sản Phẩm</h3>
+        <p>Hiệu chỉnh màu sắc, nền và ánh sáng giúp ảnh sản phẩm chuyên nghiệp hơn.</p>
+      </div>
+      <div class="service-box">
+        <i class="fas fa-image"></i>
+        <h3>Thiết Kế Ảnh Banner</h3>
+        <p>Tạo banner cho mạng xã hội, website, quảng cáo đúng chuẩn và ấn tượng.</p>
+      </div>
+      <div class="service-box">
+        <i class="fas fa-history"></i>
+        <h3>Khôi Phục Ảnh Cũ</h3>
+        <p>Phục chế ảnh cũ, mờ hoặc bị rách, giữ lại giá trị kỷ niệm quý giá.</p>
+      </div>
+    </section>
+
+    <form class="contact-form" action="#" method="post" novalidate>
+      <h2>Liên hệ với tôi</h2>
+      
+      <label for="name">Họ và tên</label>
+      <input type="text" id="name" name="name" placeholder="Nhập họ và tên" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required />
+
+      <label for="phone">Số điện thoại</label>
+      <input type="text" id="phone" name="
