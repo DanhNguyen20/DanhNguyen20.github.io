@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dịch Vụ - Nguyễn Thành Danh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+
+    body {
+      background-color: #f0f4f8;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background-color: #334155;
+      color: #e0e7ff;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-left: 20px;
+      color: #fbbf24;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: #e0e7ff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #fbbf24;
+    }
+
+    main {
+      background-color: #ffffff;
+      padding: 40px 20px;
+      margin: 40px 0;
+      box-shadow: 0 4px 15px rgba(51, 65, 85, 0.1);
+      border-radius: 8px;
+    }
+
+    main h2 {
+      color: #1e293b;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      color: #475569;
+    }
+
+    .service-box {
+      padding: 20px;
+      background: #f8fafc;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #e2e8f0;
+    }
+
+    .service-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(51, 65, 85, 0.1);
+    }
+
+    .service-box h3 {
+      margin-bottom: 15px;
+      color: #fbbf24;
+    }
+
+    /* Form liên hệ */
+    form.contact-form {
+      max-width: 500px;
+      margin: 40px auto 0 auto;
+      background: #ffffff;
+      padding: 25px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(51, 65, 85, 0.1);
+    }
+
+    form.contact-form h2 {
+      color: #1e293b;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form.contact-form label {
+      font-weight: 600;
+      color: #1e293b;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    form.contact-form input[type="text"],
+    form.contact-form input[type="email"],
+    form.contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 2px solid #fbbf24;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      color: #374151;
+      background-color: #f9fafb;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    form.contact-form input:focus,
+    form.contact-form textarea:focus {
+      border-color: #eab308;
+    }
+
+    form.contact-form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    form.contact-form button {
+      background-color: #fbbf24;
+      color: #1e293b;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 1rem;
+    }
+
+    form.contact-form button:hover {
+      background-color: #eab308;
+    }
+
+    .footer {
+      background-color: #334155;
+      color: #e0e7ff;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">Nguyễn Thành Danh</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="trangchu.html">Trang Chủ</a></li>
+          <li><a href="thongtin.html">Thông Tin</a></li>
+          <li><a href="dichvu.html" class="active">Dịch Vụ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Dịch Vụ Cung Cấp</h2>
+    <section class="services">
+      <div class="service-box">
+        <h3>Chỉnh Sửa Ảnh Chân Dung</h3>
+        <p>Làm mịn da, điều chỉnh ánh sáng, loại bỏ khuyết điểm mà vẫn giữ nét tự nhiên.</p>
+      </div>
+      <div class="service-box">
+        <h3>Xử Lý Ảnh Sản Phẩm</h3>
+        <p>Hiệu chỉnh màu sắc, nền và ánh sáng giúp ảnh sản phẩm chuyên nghiệp hơn.</p>
+      </div>
+      <div class="service-box">
+        <h3>Thiết Kế Ảnh Banner</h3>
+        <p>Tạo banner cho mạng xã hội, website, quảng cáo đúng chuẩn và ấn tượng.</p>
+      </div>
+      <div class="service-box">
+        <h3>Khôi Phục Ảnh Cũ</h3>
+        <p>Phục chế ảnh cũ, mờ hoặc bị rách, giữ lại giá trị kỷ niệm quý giá.</p>
+      </div>
+    </section>
+
+    <form class="contact-form" action="#" method="post" novalidate>
+      <h2>Liên hệ với tôi</h2>
+      
+      <label for="name">Họ và tên</label>
+      <input type="text" id="name" name="name" placeholder="Nhập họ và tên" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required />
+
+      <label for="phone">Số điện thoại</label>
+      <input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại (không bắt buộc)" />
+
+      <label for="message">Nội dung yêu cầu</label>
+      <textarea id="message" name="message" placeholder="Viết nội dung bạn muốn gửi" required></textarea>
+
+      <button type="submit">Gửi yêu cầu</button>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Nguyễn Thành Danh. Bản quyền được bảo lưu.</p>
+    </div>
+  </footer>
+</body>
+</html>
