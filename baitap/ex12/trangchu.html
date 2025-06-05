@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nguyễn Thành Danh - Đào tạo vẽ Manga chuyên nghiệp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f7f9fc, #e1e8f0);
+      color: #222831;
+      line-height: 1.6;
+    }
+
+    .top-title {
+      background-color: #2b2d42;
+      color: #edf2f4;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 10px rgba(43, 45, 66, 0.6);
+    }
+
+    /* Menu */
+    .header-image {
+      background-color: #2b2d42;
+      padding: 15px 0;
+      box-shadow: 0 3px 6px rgba(43, 45, 66, 0.5);
+    }
+
+    nav ul.nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav ul.nav-links li a {
+      color: #edf2f4;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    nav ul.nav-links li a:hover,
+    nav ul.nav-links li a.active {
+      background-color: #ef233c;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(239, 35, 60, 0.7);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+
+    /* Hero */
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 420px;
+      border-radius: 12px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #f0f0f0;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(43, 45, 66, 0.7);
+      border-radius: 12px;
+      z-index: 0;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      font-weight: 500;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+    }
+
+    .email-form {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .email-form input[type="email"] {
+      padding: 14px 20px;
+      font-size: 1rem;
+      border: 2px solid #ef233c;
+      border-radius: 6px 0 0 6px;
+      outline: none;
+      width: 280px;
+      max-width: 100%;
+      transition: border-color 0.3s ease;
+    }
+
+    .email-form input[type="email"]:focus {
+      border-color: #d90429;
+    }
+
+    .email-form button {
+      padding: 14px 30px;
+      font-size: 1rem;
+      border: none;
+      background-color: #ef233c;
+      color: white;
+      font-weight: 700;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .email-form button:hover {
+      background-color: #d90429;
+    }
+
+    /* About */
+    .about {
+      background: white;
+      border-radius: 14px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+      color: #222831;
+    }
+
+    .about h2 {
+      font-size: 2.4rem;
+      margin-bottom: 35px;
+      font-weight: 700;
+      color: #2b2d42;
+      text-align: center;
+      letter-spacing: 1.2px;
+    }
+
+    .image-wrapper {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .image-wrapper img {
+      max-width: 100%;
+      width: 480px;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(239, 35, 60, 0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .image-wrapper img:hover {
+      transform: scale(1.05);
+    }
+
+    .intro-box {
+      margin-bottom: 25px;
+    }
+
+    .intro-box h3 {
+      color: #ef233c;
+      margin-bottom: 12px;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .intro-box p {
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: #393e46;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 35px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(239, 35, 60, 0.25);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.08);
+    }
+
+    /* Form đăng ký khóa học */
+    .registration {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+      margin: 60px auto 80px;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .registration h2 {
+      font-size: 2rem;
+      color: #2b2d42;
+      margin-bottom: 25px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .registration form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .registration input[type="text"],
+    .registration input[type="email"],
+    .registration input[type="tel"] {
+      padding: 12px 15px;
+      font-size: 1rem;
+      border: 2px solid #ef233c;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .registration input[type="text"]:focus,
+    .registration input[type="email"]:focus,
+    .registration input[type="tel"]:focus {
+      border-color: #d90429;
+    }
+
+    .registration button {
+      padding: 14px;
+      font-size: 1.2rem;
+      background-color: #ef233c;
+      color: white;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .registration button:hover {
+      background-color: #d90429;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #2b2d42;
+      color: #edf2f4;
+      padding: 25px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      box-shadow: 0 -4px 10px rgba(43, 45, 66, 0.7);
+      letter-spacing: 1px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .gallery-item img {
+        height: 140px;
+      }
+      .image-wrapper img {
+        width: 100%;
+      }
+      .email-form {
+        flex-direction: column;
+      }
+      .email-form input[type="email"] {
+        border-radius: 6px;
+        width: 100%;
+      }
+      .email-form button {
+        border-radius: 6px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tiêu đề -->
+  <div class="top-title">
+    Nguyễn Thành Danh
+  </div>
+
+  <!-- Menu -->
+  <header class="header-image">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="trangchu.html" class="active">Trang Chủ</a></li>
+        <li><a href="thongtin.html">Thông Tin</a></li>
+        <li><a href="khoahoc.html">Khóa Học</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h2>Biến đam mê Manga thành tác phẩm nghệ thuật</h2>
+      <p>Trang web chính thức của Nguyễn Thành Danh - Họa sĩ và giảng viên vẽ Manga</p>
+      <p>Đào tạo vẽ truyện tranh Nhật Bản từ cơ bản đến nâng cao, theo phong cách hiện đại và chuyên sâu.</p>
+
+      <form class="email-form" action="#" method="post" onsubmit="return false;">
+        <input type="email" name="email" placeholder="Nhập email của bạn" required />
+        <button type="submit">Đăng ký học</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about container">
+    <h2>Giới thiệu về khóa học vẽ Manga</h2>
+
+    <div class="image-wrapper">
+      <img src="https://i.pinimg.com/originals/36/fc/3e/36fc3ef93b9889a36d3a6ee888ae671b.jpg"
+           alt="Ảnh minh họa vẽ manga" />
+    </div>
+
+    <div class="intro-box">
+      <h3>Cơ bản về vẽ manga</h3>
+      <p>Hướng dẫn cách dựng hình nhân vật, khung xương, tỷ lệ cơ thể chuẩn theo phong cách truyện tranh Nhật.</p>
+    </div>
+    <div class="intro-box">
+      <h3>Vẽ biểu cảm khuôn mặt</h3>
+      <p>Luyện tập các nét mặt phong phú: vui, buồn, giận, ngạc nhiên... tạo chiều sâu cảm xúc cho nhân vật.</p>
+    </div>
+    <div class="intro-box">
+      <h3>Tạo bối cảnh & hành động</h3>
+      <p>Học cách vẽ bối cảnh truyện, phối cảnh, chuyển động và hiệu ứng hành động mạnh mẽ, hấp dẫn.</p>
+    </div>
+    <div class="intro-box">
+      <h3>Kỹ thuật mực và tô màu</h3>
+      <p>Hướng dẫn sử dụng mực đen trắng, shading, screentone và tô màu kỹ thuật số trên máy tính bảng.</p>
+    </div>
+    <div class="intro-box">
+      <h3>Thiết kế nhân vật và cốt truyện</h3>
+      <p>Phát triển phong cách riêng và sáng tạo cốt truyện độc đáo cho dự án manga cá nhân.</p>
+    </div>
+
+    <p>Với nhiều năm kinh nghiệm giảng dạy và vẽ manga, tôi sẽ đồng hành cùng bạn trên hành trình trở thành họa sĩ truyện tranh. Hãy để đam mê của bạn được thể hiện bằng từng nét vẽ!</p>
+
+    <!-- Gallery Manga -->
+    <h2 style="margin-top: 40px; text-align: center; color: #ef233c;">Một số tác phẩm học viên</h2>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://cdn.pixabay.com/photo/2021/09/12/17/14/manga-6618650_1280.jpg" alt="Vẽ manga nhân vật" />
+      </div>
+      <div class="gallery-item">
+        <img src="https://cdn.pixabay.com/photo/2023/06/15/18/04/anime-8065352_1280.jpg" alt="Vẽ biểu cảm manga" />
+      </div>
+      <div class="gallery-item">
+        <img src="https://cdn.pixabay.com/photo/2020/08/17/17/23/girl-5495862_1280.jpg" alt="Tác phẩm học viên" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Phần đăng ký khóa học -->
+  <section class="registration">
+    <h2>Đăng ký khóa học ngay</h2>
+    <form action="#" method="post" onsubmit="alert('Cảm ơn bạn đã đăng ký!'); return false;">
+      <input type="text" name="name" placeholder="Họ và tên" required />
+      <input type="email" name="email" placeholder="Email của bạn" required />
+      <input type="tel" name="phone" placeholder="Số điện thoại" pattern="[0-9]{9,11}" title="Nhập số điện thoại hợp lệ" required />
+      <button type="submit">Gửi đăng ký</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 Nguyễn Thành Danh. Bản quyền thuộc về tôi.
+  </footer>
+
+</body>
+</html>
