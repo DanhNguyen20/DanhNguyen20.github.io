@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sản phẩm - Thành Danh Tech</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    body {
+      background: #f0f2f5;
+      color: #222;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header */
+    header {
+      background-color: #0f172a;
+      padding: 15px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #38bdf8;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      user-select: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      white-space: nowrap;
+    }
+    nav ul li a {
+      color: #e2e8f0;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s;
+      user-select: none;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #0f172a;
+      background-color: #38bdf8;
+    }
+    .cart {
+      font-size: 1.3rem;
+      color: #fff;
+      position: relative;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    .cart::after {
+      content: "3";
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: #38bdf8;
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 0.7rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: #38bdf8;
+      color: #0f172a;
+      font-weight: bold;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+    .btn-primary:hover {
+      background-color: #0ea5e9;
+    }
+
+    /* Search form */
+    .search-form {
+      max-width: 1100px;
+      margin: 30px auto 0;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .search-form input[type="text"] {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px 15px;
+      border-radius: 6px 0 0 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      outline: none;
+      user-select: none;
+    }
+    .search-form button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #38bdf8;
+      color: #0f172a;
+      font-weight: bold;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+    .search-form button:hover {
+      background-color: #0ea5e9;
+    }
+
+    /* Products */
+    .products {
+      max-width: 1100px;
+      margin: 30px auto 80px;
+      padding: 0 20px;
+      flex-grow: 1;
+    }
+    .products h2 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin-bottom: 40px;
+      color: #0f172a;
+      user-select: none;
+    }
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* mỗi hàng 2 sản phẩm */
+      gap: 30px;
+      align-items: stretch;
+    }
+    .product-list > .product-card {
+  height: 100%;
+}
+
+    .product-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  min-height: 100%; /* sửa từ 460px thành 100% */
+  height: 100%; /* thêm để mỗi thẻ co giãn theo dòng */
+}
+
+.product-card img {
+  width: 45%;
+  height: 220px; /* giảm từ 260px xuống 220px để gọn */
+  object-fit: cover;
+  border-bottom: 1px solid #e2e8f0;
+  transition: transform 0.3s;
+}
+
+.product-info {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.product-info p {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 10px;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 50px;
+  line-height: 1.4;
+}
+
+    .product-info h3 {
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: #0f172a;
+      user-select: none;
+    }
+    .product-info p {
+      flex-grow: 1;
+      font-size: 1rem;
+      color: #475569;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 18px;
+      user-select: none;
+    }
+    .product-info a.btn-details {
+      background-color: #0f172a;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 6px;
+      display: inline-block;
+      font-weight: 600;
+      text-align: center;
+      user-select: none;
+      transition: background-color 0.3s;
+    }
+    .product-info a.btn-details:hover {
+      background-color: #1e293b;
+    }
+
+    /* Pagination */
+    .pagination {
+      margin: 40px 0 0;
+      text-align: center;
+      user-select: none;
+    }
+    .pagination button {
+      background-color: #38bdf8;
+      border: none;
+      color: #0f172a;
+      font-weight: 700;
+      margin: 0 6px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+    .pagination button:hover:not(:disabled) {
+      background-color: #0ea5e9;
+    }
+    .pagination button:disabled {
+      background-color: #94a3b8;
+      cursor: not-allowed;
+      color: #f0f2f5;
+    }
+
+    /* Footer */
+    footer.footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      border-radius: 0 0 12px 12px;
+      margin-top: auto;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .header-content {
+        justify-content: center;
+      }
+      .product-list {
+        grid-template-columns: 1fr; /* 1 sp 1 hàng trên thiết bị nhỏ */
+      }
+      .search-form {
+        justify-content: center;
+      }
+    }
+       .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .gallery-item {
+      width: 300px;
+      height: 300px;
+      margin: 10px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.2);
+      z-index: 1;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">Thành Danh Tech</div>
+      <nav>
+        <ul>
+          <li><a href="trangchu.html">Trang chủ</a></li>
+          <li><a href="sanpham.html" class="active">Sản phẩm</a></li>
+          <li><a href="giamgia.html">Giảm Giá</a></li>
+          <li><a href="gioithieu.html">Giới thiệu</a></li>
+          <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <div class="cart" title="Giỏ hàng">🛒</div>
+    </div>
+  </header>
+
+  <!-- Search form -->
+  <form class="search-form" id="search-form" onsubmit="return false;">
+    <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm..." />
+    <button type="button" id="search-btn">Tìm kiếm</button>
+  </form>
+
+  <!-- Sản phẩm -->
+  <section class="products">
+    <h2>Sản phẩm nổi bật</h2>
+    <div class="product-list" id="product-list">
+      <!-- Sản phẩm sẽ được JS chèn vào đây -->
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="pagination"></div>
+  </section>
+
+  <footer class="footer">
+  <div class="footer-container">
+    <!-- Giới thiệu -->
+    <div class="footer-section about">
+      <h2 class="footer-logo">Thành Danh Tech</h2>
+      <p>
+        Cửa hàng điện tử uy tín, cung cấp sản phẩm công nghệ chính hãng với giá tốt và dịch vụ tận tâm.
+      </p>
+      <p class="copyright">
+        © 2025 Thành Danh Tech. All rights reserved.
+      </p>
+    </div>
+
+    <!-- Liên kết nhanh -->
+    <div class="footer-section links">
+      <h3>Liên kết nhanh</h3>
+      <ul>
+        <li><a href="trangchu.html">Trang Chủ</a></li>
+        <li><a href="sanpham.html">Sản Phẩm</a></li>
+        <li><a href="lienhe.html">Liên Hệ</a></li>
+      </ul>
+    </div>
+
+    <!-- Thông tin liên hệ -->
+    <div class="footer-section contact">
+      <h3>Liên hệ</h3>
+      <p>Email: <a href="tdanh6087@gmail.com">tdanh6087@gmail.com</a></p>
+      <p>Hotline: <a href="tel:19001234">1900 1234</a></p>
+      <p>Địa chỉ: Ninh Hòa, Nha trang, khánh Hòa</p>
+      <div class="social-icons" aria-label="Mạng xã hội">
+        <a href="#" aria-label="Facebook" class="social-link" target="_blank" rel="noopener">
+          <!-- Facebook SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351C0 23.4.6 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.31h3.59l-.467 3.622h-3.123V24h6.116C23.4 24 24 23.4 24 22.675V1.325C24 .6 23.4 0 22.675 0z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="social-link" target="_blank" rel="noopener">
+          <!-- Instagram SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5zM12 7.25a4.75 4.75 0 1 1 0 9.5a4.75 4.75 0 0 1 0-9.5zm5.5-1.5a1.25 1.25 0 1 1 0 2.5a1.25 1.25 0 0 1 0-2.5z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Twitter" class="social-link" target="_blank" rel="noopener">
+          <!-- Twitter SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M23.954 4.569a10 10 0 0 1-2.825.775 4.936 4.936 0 0 0 2.163-2.724 9.865 9.865 0 0 1-3.127 1.195 4.92 4.92 0 0 0-8.384 4.482A13.978 13.978 0 0 1 1.64 3.149a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.229-.616v.06a4.919 4.919 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.224.085 4.935 4.935 0 0 0 4.604 3.417A9.867 9.867 0 0 1 0 19.54a13.896 13.896 0 0 0 7.548 2.209c9.058 0 14.009-7.513 14.009-14.009 0-.213-.004-.425-.015-.636A10.025 10.025 0 0 0 24 4.59z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Form đăng ký nhận tin -->
+    <div class="footer-section newsletter">
+      <h3>Đăng ký nhận tin</h3>
+      <p>Nhận ưu đãi & cập nhật mới nhất từ chúng tôi</p>
+      <form action="#" method="post" class="newsletter-form">
+        <input
+          type="email"
+          name="email"
+          placeholder="Nhập email của bạn"
+          required
+          aria-label="Nhập email nhận tin"
+        />
+        <button type="submit" aria-label="Đăng ký nhận tin">Đăng ký</button>
+      </form>
+    </div>
+
+    <!-- Form tìm kiếm sản phẩm -->
+    <div class="footer-section search-product">
+      <h3>Tìm sản phẩm</h3>
+      <form action="products.html" method="GET" class="search-form">
+        <input
+          type="text"
+          name="q"
+          placeholder="Nhập tên sản phẩm..."
+          aria-label="Tìm sản phẩm"
+          required
+        />
+        <button type="submit" aria-label="Tìm kiếm sản phẩm">
+          🔍
+        </button>
+      </form>
+    </div>
+  </div>
+</footer>
+  <script>
+    // Dữ liệu sản phẩm
+    const products = [
+      {
+        id: 1,
+        title: "Camera IP Hikvision",
+        description: "Độ phân giải 2MP, hỗ trợ ban đêm, chống nước IP66.",
+        price: "1,200,000 VNĐ",
+        image: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTfcnshw48jz-qUfzw8yQhX-7P_SROfBnZLvzyc2A_rHfKBLSFM7MD1dbMoZue1KvznBBSA56DqXlP7ODEKuwXqhZc2jTRVo6ICOgGi5FPC9nfaX2mtcxGNNjQQjqzj1Ky5GDeO90w&usqp=CAc",
+        link: "#"
+      },
+      {
+        id: 2,
+        title: "Ổ cứng lưu trữ 1TB",
+        description: "Phù hợp hệ thống camera ghi hình liên tục 24/7.",
+        price: "1,500,000 VNĐ",
+        image: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSrO18seStT_LO03zwXzHJaVgT39crqEqbKgcLjkCPHraG4o4AM5eTZgSugxEcRV5CB6-1HDiQBj9zCiCEBwvUSm-sBRhvQHyosiB14wrYljXVFEP3iJS_p_RTNpFlpJTaaFo0HeA&usqp=CAc",
+        link: "#"
+      },
+      {
+        id: 3,
+        title: "Thiết bị báo trộm",
+        description: "Kết nối không dây, điều khiển từ xa bằng điện thoại.",
+        price: "850,000 VNĐ",
+        image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRHoSj3mogC522dmyT8SXCSwvV7y9AK31vxP8YujFykpavQoXoczfW2QzpOtLzjx6LbFfF0oLlRgMav1OmRy_KnoxmnwwSnr3OgS8Y1xat8IBy7SUUHYxECoXWmQ7p1NE72p8-cRIA&usqp=CAc",
+        link: "#"
+      },
+      {
+        id: 4,
+        title: "Camera Wifi Xiaomi",
+        description: "Độ phân giải 1080p, kết nối dễ dàng, giám sát từ xa.",
+        price: "1,350,000 VNĐ",
+        image: "data:image/jpeg;base64,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",
+        link: "#"
+      },
+      {
+        id: 5,
+        title: "Sạc Dự Phòng",
+        description: "Sạc Pin Trâu, Nhanh, Sử dụng Lâu Dài.",
+        price: "2,200,000 VNĐ",
+        image: "https://product.hstatic.net/1000153276/product/pin_du_phong_anker_20000_87w_-_a1383_3ec73ab4a1844b13b56f5cfda3004cdd.png",
+        link: "#"
+      },
+      {
+        id: 6,
+        title: "Samsung s24 ultraultra",
+        description: "Điện Thoại Chính Hãng.",
+        price: "33.990,000 VNĐ",
+        image: "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/s/s/ss-s24-ultra-xam-222.png",
+        link: "#"
+      },
+      {
+        id: 7,
+        title: "Iphone 15 Pro maxmax",
+        description: "Ghi hình độ nét cao, hỗ trợ xem qua mạng.",
+        price: "19,990,000 VNĐ",
+        image: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSkO51fonZ5sH76CbOKIQjf7qIIf6p3lxbKwHTSA51DAshFwBvlM4ONN5F8UPpBFUVllz2_vLolsSTOzr8SjLfMS-E1uJkyYRiK1AOR4UUb1jfkz-9y6MWbfZ4RYtKjDhmCRKnn7H4&usqp=CAc",
+        link: "#"
+      },
+      {
+        id: 8,
+        title: "Tai Nghe Airpods ProPro",
+        description: "",
+        price: "4.0000,000 VNĐ",
+        image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSc5HzVlg9sxk5X3sr3WVR8n8GMENZcR8d3n9owZAkyNXvkmzgDzGCcx1H8zZdaHZikCDg8zdXsLauHBKXDnle3HtUEiCuEAedlC7tzPSpwc9HE93tnUmvrPe4d6UfnKyVMqWaJYQ&usqp=CAc",
+        link: "#"
+      },
+      {
+        id: 9,
+        title: "Xiaomi 14T Pro",
+        description: ".",
+        price: "16.99990,000 VNĐ",
+        image: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRhm8XU_xkeflCpY5VQWHo1A6bKWqHwVMOvagyAEQ82PIdjaVBJy4ADGAv15Glg_6NBJdFN69n7ptAZE6XsIupX9N2PuV3nd7hLEnK8N7jrpazuGqbn2W-0CWnaeJC6HzhQVEsuth6NUg&usqp=CAc",
+        link: "#"
+      }
+    ];
+
+    const productsPerPage = 6;
+    let currentPage = 1;
+    let filteredProducts = [...products];
+
+    const productList = document.getElementById("product-list");
+    const pagination = document.getElementById("pagination");
+    const searchInput = document.getElementById("search-input");
+    const searchBtn = document.getElementById("search-btn");
+
+    function renderProducts(page) {
+      productList.innerHTML = "";
+      const start = (page - 1) * productsPerPage;
+      const end = start + productsPerPage;
+      const paginatedItems = filteredProducts.slice(start, end);
+
+      if (paginatedItems.length === 0) {
+        productList.innerHTML = `<p style="grid-column: 1 / -1; text-align:center; color:#666;">Không tìm thấy sản phẩm phù hợp.</p>`;
+        return;
+      }
+
+      paginatedItems.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.className = "product-card";
+
+        productCard.innerHTML = `
+          <img src="${product.image}" alt="${product.title}">
+          <div class="product-info">
+            <h3>${product.title}</h3>
+            <p>${product.description}</p>
+            <div class="product-price">${product.price}</div>
+            <a href="${product.link}" class="btn-details">Xem chi tiết</a>
+          </div>
+        `;
+        productList.appendChild(productCard);
+      });
+    }
+
+    function renderPagination() {
+      pagination.innerHTML = "";
+      const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+      // Prev button
+      const prevBtn = document.createElement("button");
+      prevBtn.textContent = "« Trước";
+      prevBtn.disabled = currentPage === 1;
+      prevBtn.onclick = () => {
+        if (currentPage > 1) {
+          currentPage--;
+          update();
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+      };
+      pagination.appendChild(prevBtn);
+
+      // Page numbers
+      for (let i = 1; i <= totalPages; i++) {
+        const pageBtn = document.createElement("button");
+        pageBtn.textContent = i;
+        pageBtn.disabled = i === currentPage;
+        pageBtn.onclick = () => {
+          currentPage = i;
+          update();
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+        pagination.appendChild(pageBtn);
+      }
+
+      // Next button
+      const nextBtn = document.createElement("button");
+      nextBtn.textContent = "Sau »";
+      nextBtn.disabled = currentPage === totalPages;
+      nextBtn.onclick = () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          update();
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+      };
+      pagination.appendChild(nextBtn);
+    }
+
+    function update() {
+      renderProducts(currentPage);
+      renderPagination();
+    }
+
+    searchBtn.addEventListener("click", () => {
+      const query = searchInput.value.trim().toLowerCase();
+      filteredProducts = products.filter(p =>
+        p.title.toLowerCase().includes(query) || p.description.toLowerCase().includes(query)
+      );
+      currentPage = 1;
+      update();
+    });
+
+    // Enter key cũng kích hoạt tìm kiếm
+    searchInput.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        searchBtn.click();
+      }
+    });
+
+    // Khởi tạo trang
+    update();
+  </script>
+</body>
+</html>
