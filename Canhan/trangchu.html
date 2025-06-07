@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cửa hàng điện tử - Trang Chủ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    body {
+      background: #f0f2f5;
+      color: #222;
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header */
+    header {
+      background-color: #0f172a;
+      padding: 15px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #38bdf8;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      white-space: nowrap;
+    }
+    nav ul li a {
+      color: #e2e8f0;
+      font-weight: 600;
+      padding: 6px 10px;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #38bdf8;
+    }
+    .cart {
+      font-size: 1.3rem;
+      color: #fff;
+      position: relative;
+      white-space: nowrap;
+    }
+    .cart::after {
+      content: "3";
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: #38bdf8;
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 0.7rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: #38bdf8;
+      color: #0f172a;
+      font-weight: bold;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn-primary:hover {
+      background-color: #0ea5e9;
+    }
+
+    /* Form tìm kiếm trong header */
+    .search-product {
+      display: flex;
+      gap: 8px;
+      flex-grow: 1;
+      max-width: 400px;
+    }
+    .search-input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 2px solid #38bdf8;
+      border-radius: 6px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .search-input:focus {
+      border-color: #0ea5e9;
+    }
+    .search-product button.btn-primary {
+      padding: 8px 16px;
+      font-size: 1rem;
+    }
+
+    /* Hero */
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 420px;
+      border-radius: 12px;
+      margin: 40px auto;
+      max-width: 1100px;
+      color: white;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    /* Products */
+    .products {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    .products h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      color: #0f172a;
+    }
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+    .product-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  min-height: 420px; /* thêm dòng này */
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px; /* Tăng chiều cao ảnh */
+  object-fit: cover;
+  border-bottom: 1px solid #e2e8f0; /* Thêm viền nhẹ giữa ảnh và nội dung */
+}
+
+
+    .product-info {
+      padding: 16px 18px;
+      flex-grow: 1;
+    }
+    .product-card img {
+  width: 100%;
+  height: 250px; /* Tăng chiều cao ảnh */
+  object-fit: cover;
+  border-bottom: 1px solid #e2e8f0; /* Thêm viền nhẹ giữa ảnh và nội dung */
+}
+
+   .product-card img {
+  width: 50%;
+  height: 220px; /* Tăng chiều cao ảnh */
+  object-fit: cover;
+  border-bottom: 1px solid #e2e8f0; /* Thêm viền nhẹ giữa ảnh và nội dung */
+}
+
+    .product-info a.btn-details {
+      background-color: #0f172a;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      display: inline-block;
+      font-weight: 600;
+      text-align: center;
+    }
+    .product-info a.btn-details:hover {
+      background-color: #1e293b;
+    }
+
+    /* Form tìm kiếm sản phẩm bên dưới Hero */
+    .search-product-main {
+      max-width: 400px;
+      margin: 0 auto 30px auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* Features */
+    .why-choose {
+      background-color: white;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 50px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+    .why-choose h2 {
+      font-size: 2rem;
+      text-align: center;
+      color: #0f172a;
+      margin-bottom: 30px;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
+    .feature-item {
+      flex: 1 1 220px;
+      text-align: center;
+      padding: 10px;
+    }
+    .feature-icon {
+      font-size: 3rem;
+      color: #38bdf8;
+      margin-bottom: 12px;
+    }
+    .feature-item h3 {
+      font-size: 1.2rem;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .feature-item p {
+      font-size: 1rem;
+      color: #475569;
+    }
+
+    /* Footer */
+    footer.footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      border-radius: 0 0 12px 12px;
+      margin-top: 80px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .header-content {
+        justify-content: center;
+      }
+      .search-product {
+        max-width: 100%;
+        order: 3;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero {
+        height: 320px;
+      }
+      .hero-content h1 {
+        font-size: 1.5rem;
+      }
+      .product-list {
+        grid-template-columns: 1fr;
+      }
+      nav ul {
+        gap: 10px;
+      }
+      .cart {
+        order: 4;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo">Thành Danh Tech</div>
+
+      <form class="search-product" action="#" method="get" onsubmit="return onSearch(event)">
+        <input type="text" name="q" placeholder="Tìm kiếm sản phẩm..." class="search-input" />
+        <button type="submit" class="btn-primary">Tìm kiếm</button>
+      </form>
+
+      <nav>
+        <ul>
+          <li><a href="trangchu.html" class="active">Trang Chủ</a></li>
+          <li><a href="sanpham.html">Sản phẩm</a></li>
+          <li><a href="giamgia.html">Giảm Giá</a></li>
+          <li><a href="gioithieu.html">Giới thiệu</a></li>
+          <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="cart" title="Giỏ hàng">&#128722;</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Mua Sắm Điện Tử Thông Minh</h1>
+      <p>Chọn sản phẩm chất lượng, giá tốt nhất</p>
+      <button class="btn-primary">Mua Ngay</button>
+    </div>
+  </section>
+
+  <section class="products">
+    <h2>Sản Phẩm Nổi Bật</h2>
+    <form class="search-product-main" action="#" method="get" onsubmit="return onSearch(event)">
+          <button type="submit" class="btn-primary">Xem Thêm</button>
+
+    </form>
+    <div class="product-list">
+      <div class="product-card">
+        <img src="data:image/jpeg;base64,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" alt="Laptop HP" />
+        <div class="product-info">
+          <h3>Laptop HP Pavilion</h3>
+          <p class="price">17.590.000 VNĐ</p>
+          <a href="#" class="btn-details">Xem Chi Tiết</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRnz006QYeOjh7FnRbmiCoOD5Ixp2zeiAxGHL_FieVxBdCON9U25bvMw0_VYJejnvUOSGx0FddCHHwyfeP9liPWCbL858ll2S1bXi9P7mr6bN_nrz8oKUBsKxF1duLGv_pK2fSljMqW&usqp=CAc" alt="Điện thoại Samsung" />
+        <div class="product-info">
+          <h3>Điện Thoại Iphone14 Pro MMax</h3>
+          <p class="price">15.290.000 VNĐ</p>
+          <a href="#" class="btn-details">Xem Chi Tiết</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTuwzyRTkAJvT6OwD1jPS1xJFYrG4Ujb8hz_V2q9TgqlpYI0MWGOjXQFYg9lXm3hscpjtV9XTYAP0PX50Y2O2pAGIyDkazRORtP1N9VC6Cc6JC8eRRQoR7kMjMy_PQmlpmM72jHFKA&usqp=CAc" alt="Tai nghe Sony" />
+        <div class="product-info">
+          <h3>Tai nghe Sony</h3>
+          <p class="price">1.200.000 VNĐ</p>
+          <a href="#" class="btn-details">Xem Chi Tiết</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-choose">
+    <h2>Tại sao chọn Điện Tử Shop?</h2>
+    <div class="features">
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <h3>Giao hàng nhanh</h3>
+        <p>Đảm bảo giao hàng nhanh chóng, đúng hẹn.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">💎</div>
+        <h3>Sản phẩm chất lượng</h3>
+        <p>Chọn lọc kỹ lưỡng, chỉ bán hàng chính hãng.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">💰</div>
+        <h3>Giá cả cạnh tranh</h3>
+        <p>Luôn có giá tốt nhất trên thị trường.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🤝</div>
+        <h3>Hỗ trợ khách hàng</h3>
+        <p>Đội ngũ chăm sóc nhiệt tình, tận tâm.</p>
+      </div>
+    </div>
+  </section>
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Giới thiệu -->
+    <div class="footer-section about">
+      <h2 class="footer-logo">Thành Danh Tech</h2>
+      <p>
+        Cửa hàng điện tử uy tín, cung cấp sản phẩm công nghệ chính hãng với giá tốt và dịch vụ tận tâm.
+      </p>
+      <p class="copyright">
+        © 2025 Thành Danh Tech. All rights reserved.
+      </p>
+    </div>
+
+    <!-- Liên kết nhanh -->
+    <div class="footer-section links">
+      <h3>Liên kết nhanh</h3>
+      <ul>
+        <li><a href="trangchu.html">Trang Chủ</a></li>
+        <li><a href="sanpham.html">Sản Phẩm</a></li>
+        <li><a href="lienhe.html">Liên Hệ</a></li>
+      </ul>
+    </div>
+
+    <!-- Thông tin liên hệ -->
+    <div class="footer-section contact">
+      <h3>Liên hệ</h3>
+      <p>Email: <a href="tdanh6087@gmail.com">tdanh6087@gmail.com</a></p>
+      <p>Hotline: <a href="tel:19001234">1900 1234</a></p>
+      <p>Địa chỉ: Ninh Hòa, Nha trang, khánh Hòa</p>
+      <div class="social-icons" aria-label="Mạng xã hội">
+        <a href="#" aria-label="Facebook" class="social-link" target="_blank" rel="noopener">
+          <!-- Facebook SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351C0 23.4.6 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.31h3.59l-.467 3.622h-3.123V24h6.116C23.4 24 24 23.4 24 22.675V1.325C24 .6 23.4 0 22.675 0z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="social-link" target="_blank" rel="noopener">
+          <!-- Instagram SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5zM12 7.25a4.75 4.75 0 1 1 0 9.5a4.75 4.75 0 0 1 0-9.5zm5.5-1.5a1.25 1.25 0 1 1 0 2.5a1.25 1.25 0 0 1 0-2.5z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Twitter" class="social-link" target="_blank" rel="noopener">
+          <!-- Twitter SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M23.954 4.569a10 10 0 0 1-2.825.775 4.936 4.936 0 0 0 2.163-2.724 9.865 9.865 0 0 1-3.127 1.195 4.92 4.92 0 0 0-8.384 4.482A13.978 13.978 0 0 1 1.64 3.149a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.229-.616v.06a4.919 4.919 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.224.085 4.935 4.935 0 0 0 4.604 3.417A9.867 9.867 0 0 1 0 19.54a13.896 13.896 0 0 0 7.548 2.209c9.058 0 14.009-7.513 14.009-14.009 0-.213-.004-.425-.015-.636A10.025 10.025 0 0 0 24 4.59z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Form đăng ký nhận tin -->
+    <div class="footer-section newsletter">
+      <h3>Đăng ký nhận tin</h3>
+      <p>Nhận ưu đãi & cập nhật mới nhất từ chúng tôi</p>
+      <form action="#" method="post" class="newsletter-form">
+        <input
+          type="email"
+          name="email"
+          placeholder="Nhập email của bạn"
+          required
+          aria-label="Nhập email nhận tin"
+        />
+        <button type="submit" aria-label="Đăng ký nhận tin">Đăng ký</button>
+      </form>
+    </div>
+
+    <!-- Form tìm kiếm sản phẩm -->
+    <div class="footer-section search-product">
+      <h3>Tìm sản phẩm</h3>
+      <form action="products.html" method="GET" class="search-form">
+        <input
+          type="text"
+          name="q"
+          placeholder="Nhập tên sản phẩm..."
+          aria-label="Tìm sản phẩm"
+          required
+        />
+        <button type="submit" aria-label="Tìm kiếm sản phẩm">
+          🔍
+        </button>
+      </form>
+    </div>
+  </div>
