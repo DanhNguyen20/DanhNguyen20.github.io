@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giới thiệu - Thành Danh Tech</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    body {
+      background: #f0f2f5;
+      color: #222;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 30px 20px;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header */
+    header {
+      background-color: #0f172a;
+      padding: 15px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #38bdf8;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      user-select: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      white-space: nowrap;
+    }
+    nav ul li a {
+      color: #e2e8f0;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s;
+      user-select: none;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #0f172a;
+      background-color: #38bdf8;
+    }
+    .cart {
+      font-size: 1.3rem;
+      color: #fff;
+      position: relative;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    .cart::after {
+      content: "3";
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: #38bdf8;
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 0.7rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: #38bdf8;
+      color: #0f172a;
+      font-weight: bold;
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+    .btn-primary:hover {
+      background-color: #0ea5e9;
+    }
+
+    /* Search form */
+    .search-form {
+      max-width: 1100px;
+      margin: 30px auto 0;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .search-form input[type="text"] {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px 15px;
+      border-radius: 6px 0 0 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      outline: none;
+      user-select: none;
+    }
+    .search-form button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #38bdf8;
+      color: #0f172a;
+      font-weight: bold;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+    .search-form button:hover {
+      background-color: #0ea5e9;
+    }
+
+    /* Products */
+    .products {
+      max-width: 1100px;
+      margin: 30px auto 80px;
+      padding: 0 20px;
+      flex-grow: 1;
+    }
+    .products h2 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin-bottom: 40px;
+      color: #0f172a;
+      user-select: none;
+    }
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* mỗi hàng 2 sản phẩm */
+      gap: 30px;
+      align-items: stretch;
+    }
+    .product-list > .product-card {
+      height: 100%;
+    }
+    .product-card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      min-height: 100%; /* sửa từ 460px thành 100% */
+      height: 100%; /* thêm để mỗi thẻ co giãn theo dòng */
+    }
+    .image-container {
+      width: 300px;
+      height: 300px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ccc; /* Tùy chọn: để thấy viền */
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .product-info h3 {
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: #0f172a;
+      user-select: none;
+    }
+    .product-info p {
+      flex-grow: 1;
+      font-size: 1rem;
+      color: #475569;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 18px;
+      user-select: none;
+    }
+    .product-info a.btn-details {
+      background-color: #0f172a;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 6px;
+      display: inline-block;
+      font-weight: 600;
+      text-align: center;
+      user-select: none;
+      transition: background-color 0.3s;
+    }
+    .product-info a.btn-details:hover {
+      background-color: #1e293b;
+    }
+
+    /* Pagination */
+    .pagination {
+      margin: 40px 0 0;
+      text-align: center;
+      user-select: none;
+    }
+    .pagination button {
+      background-color: #38bdf8;
+      border: none;
+      color: #0f172a;
+      font-weight: 700;
+      margin: 0 6px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+    .pagination button:hover:not(:disabled) {
+      background-color: #0ea5e9;
+    }
+    .pagination button:disabled {
+      background-color: #94a3b8;
+      cursor: not-allowed;
+      color: #f0f2f5;
+    }
+
+    /* Footer */
+    footer.footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      border-radius: 0 0 12px 12px;
+      margin-top: auto;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .header-content {
+        justify-content: center;
+      }
+      .product-list {
+        grid-template-columns: 1fr; /* 1 sp 1 hàng trên thiết bị nhỏ */
+      }
+      .search-form {
+        justify-content: center;
+      }
+    }
+    
+    /* Thêm style riêng cho trang giới thiệu */
+    main {
+      max-width: 960px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 40px 40px 60px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      user-select: none;
+    }
+    main h1 {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      color: #0f172a;
+      text-align: center;
+    }
+    main h2 {
+      font-size: 2rem;
+      color: #0f172a;
+      border-bottom: 3px solid #38bdf8;
+      padding-bottom: 8px;
+      margin-top: 45px;
+      margin-bottom: 20px;
+    }
+    main p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+    main .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    main .feature-item {
+      background: #f8fafc;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
+    main .feature-item:hover {
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    main .feature-item h3 {
+      margin-bottom: 10px;
+      color: #1e293b;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">Thành Danh Tech</div>
+        <nav>
+          <ul>
+            <li><a href="trangchu.html">Trang chủ</a></li>
+            <li><a href="sanpham.html">Sản phẩm</a></li>
+            <li><a href="giamgia.html">Giảm giá</a></li>
+            <li><a href="gioithieu.html" class="active">Giới thiệu</a></li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+          </ul>
+        </nav>
+        <div class="cart" title="Giỏ hàng">&#128722;</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1>Giới thiệu về Sản Phẩm Của Chúng Tôi</h1>
+
+    <p>
+      Thành Danh Tech là đơn vị tiên phong trong lĩnh vực cung cấp giải pháp và sản phẩm công nghệ tại Việt Nam. Với hơn một thập kỷ kinh nghiệm, chúng tôi không chỉ cung cấp thiết bị hiện đại mà còn đồng hành cùng khách hàng trong việc áp dụng công nghệ để tối ưu hóa hoạt động và nâng cao trải nghiệm người dùng.
+    </p>
+    <p>
+      Chúng tôi cam kết mang đến các sản phẩm đạt chuẩn quốc tế, từ các thiết bị phần cứng chất lượng cao đến phần mềm ứng dụng sáng tạo, phù hợp với mọi đối tượng khách hàng từ cá nhân đến doanh nghiệp lớn.
+    </p>
+
+    <h2>Tại sao khách hàng tin chọn Thành Danh Tech?</h2>
+    <div class="features">
+      <div class="feature-item">
+        <h3>Danh mục sản phẩm đa dạng & cập nhật</h3>
+        <p>
+          Luôn cập nhật các công nghệ mới nhất trên thế giới, Thành Danh Tech cung cấp đa dạng các dòng sản phẩm, từ laptop, smartphone, thiết bị thông minh đến các giải pháp IoT và AI tiên tiến, đáp ứng mọi nhu cầu công nghệ của khách hàng.
+        </p>
+      </div>
+      <div class="feature-item">
+        <h3>Giá trị cạnh tranh & minh bạch</h3>
+        <p>
+          Chính sách giá rõ ràng, cạnh tranh trên thị trường, cùng các chương trình ưu đãi định kỳ giúp khách hàng dễ dàng tiếp cận các sản phẩm công nghệ chất lượng với mức giá hợp lý.
+        </p>
+      </div>
+      <div class="feature-item">
+        <h3>Hỗ trợ tận tâm & chuyên nghiệp</h3>
+        <p>
+          Đội ngũ tư vấn và kỹ thuật giàu kinh nghiệm, luôn sẵn sàng hỗ trợ 24/7, giúp khách hàng lựa chọn sản phẩm phù hợp và giải quyết nhanh chóng các yêu cầu kỹ thuật.
+        </p>
+      </div>
+      <div class="feature-item">
+        <h3>Chính sách bảo hành &
+hậu mãi ưu việt</h3>
+<p>
+Cam kết bảo hành theo tiêu chuẩn quốc tế, dịch vụ hậu mãi tận tâm, tạo sự an tâm tuyệt đối cho khách hàng khi sử dụng sản phẩm và dịch vụ của chúng tôi.
+</p>
+</div>
+</div>
+
+</main><
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Giới thiệu -->
+    <div class="footer-section about">
+      <h2 class="footer-logo">Thành Danh Tech</h2>
+      <p>
+        Cửa hàng điện tử uy tín, cung cấp sản phẩm công nghệ chính hãng với giá tốt và dịch vụ tận tâm.
+      </p>
+      <p class="copyright">
+        © 2025 Thành Danh Tech. All rights reserved.
+      </p>
+    </div>
+
+    <!-- Liên kết nhanh -->
+    <div class="footer-section links">
+      <h3>Liên kết nhanh</h3>
+      <ul>
+        <li><a href="trangchu.html">Trang Chủ</a></li>
+        <li><a href="sanpham.html">Sản Phẩm</a></li>
+        <li><a href="lienhe.html">Liên Hệ</a></li>
+      </ul>
+    </div>
+
+    <!-- Thông tin liên hệ -->
+    <div class="footer-section contact">
+      <h3>Liên hệ</h3>
+      <p>Email: <a href="tdanh6087@gmail.com">tdanh6087@gmail.com</a></p>
+      <p>Hotline: <a href="tel:19001234">1900 1234</a></p>
+      <p>Địa chỉ: Ninh Hòa, Nha trang, khánh Hòa</p>
+      <div class="social-icons" aria-label="Mạng xã hội">
+        <a href="#" aria-label="Facebook" class="social-link" target="_blank" rel="noopener">
+          <!-- Facebook SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.325v21.351C0 23.4.6 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.31h3.59l-.467 3.622h-3.123V24h6.116C23.4 24 24 23.4 24 22.675V1.325C24 .6 23.4 0 22.675 0z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="social-link" target="_blank" rel="noopener">
+          <!-- Instagram SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5zM12 7.25a4.75 4.75 0 1 1 0 9.5a4.75 4.75 0 0 1 0-9.5zm5.5-1.5a1.25 1.25 0 1 1 0 2.5a1.25 1.25 0 0 1 0-2.5z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Twitter" class="social-link" target="_blank" rel="noopener">
+          <!-- Twitter SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M23.954 4.569a10 10 0 0 1-2.825.775 4.936 4.936 0 0 0 2.163-2.724 9.865 9.865 0 0 1-3.127 1.195 4.92 4.92 0 0 0-8.384 4.482A13.978 13.978 0 0 1 1.64 3.149a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.229-.616v.06a4.919 4.919 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.224.085 4.935 4.935 0 0 0 4.604 3.417A9.867 9.867 0 0 1 0 19.54a13.896 13.896 0 0 0 7.548 2.209c9.058 0 14.009-7.513 14.009-14.009 0-.213-.004-.425-.015-.636A10.025 10.025 0 0 0 24 4.59z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Form đăng ký nhận tin -->
+    <div class="footer-section newsletter">
+      <h3>Đăng ký nhận tin</h3>
+      <p>Nhận ưu đãi & cập nhật mới nhất từ chúng tôi</p>
+      <form action="#" method="post" class="newsletter-form">
+        <input
+          type="email"
+          name="email"
+          placeholder="Nhập email của bạn"
+          required
+          aria-label="Nhập email nhận tin"
+        />
+        <button type="submit" aria-label="Đăng ký nhận tin">Đăng ký</button>
+      </form>
+    </div>
+
+    <!-- Form tìm kiếm sản phẩm -->
+    <div class="footer-section search-product">
+      <h3>Tìm sản phẩm</h3>
+      <form action="products.html" method="GET" class="search-form">
+        <input
+          type="text"
+          name="q"
+          placeholder="Nhập tên sản phẩm..."
+          aria-label="Tìm sản phẩm"
+          required
+        />
+        <button type="submit" aria-label="Tìm kiếm sản phẩm">
+          🔍
+        </button>
+      </form>
+    </div>
+  </div>
+</footer>
