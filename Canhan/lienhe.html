@@ -6,7 +6,6 @@
   <title>Liên hệ - Thành Danh Tech</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* === CSS Gốc của bạn giữ nguyên === */
     * {
       margin: 0;
       padding: 0;
@@ -96,7 +95,6 @@
       align-items: center;
       justify-content: center;
     }
-    /* Buttons */
     .btn-primary {
       background-color: #38bdf8;
       color: #0f172a;
@@ -112,7 +110,6 @@
     .btn-primary:hover {
       background-color: #0ea5e9;
     }
-    /* Search form */
     .search-form {
       max-width: 1100px;
       margin: 30px auto 0;
@@ -144,7 +141,6 @@
     .search-form button:hover {
       background-color: #0ea5e9;
     }
-    /* Footer */
     footer.footer {
       background-color: #0f172a;
       color: #94a3b8;
@@ -155,7 +151,6 @@
       margin-top: auto;
       user-select: none;
     }
-    /* Responsive */
     @media (max-width: 768px) {
       nav ul {
         flex-wrap: wrap;
@@ -165,8 +160,7 @@
         justify-content: center;
       }
     }
-    
-    /* === CSS mới cho form liên hệ, bắt mắt hơn === */
+
     main.container {
       max-width: 600px;
       margin: 40px auto 80px;
@@ -232,7 +226,6 @@
     textarea:focus::placeholder {
       opacity: 0.5;
     }
-    /* Icons */
     input#name {
       background-image: url('data:image/svg+xml;utf8,<svg fill="%232563eb" xmlns="http://www.w3.org/2000/svg" height="22" viewBox="0 0 24 24" width="22"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>');
     }
@@ -255,10 +248,20 @@
       position: relative;
       overflow: hidden;
       transition: all 0.35s ease;
- trangchu.html">Trang chủ</a></li>
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo">Thành Danh Tech</div>
+      <nav>
+        <ul>
+          <li><a href="trangchu.html">Trang chủ</a></li>
           <li><a href="sanpham.html">Sản phẩm</a></li>
           <li><a href="giamgia.html">Giảm Giá</a></li>
-          <li><a href="gioi-thieu.html">Giới thiệu</a></li>  
+          <li><a href="gioi-thieu.html">Giới thiệu</a></li>
           <li><a href="lienhe.html" class="active">Liên hệ</a></li>
         </ul>
       </nav>
@@ -266,7 +269,6 @@
     </div>
   </header>
 
-  <!-- NỘI DUNG LIÊN HỆ -->
   <main class="container" role="main" aria-label="Form liên hệ">
     <h2>Liên hệ với chúng tôi</h2>
     <form action="#" method="post" onsubmit="alert('Cảm ơn bạn đã gửi liên hệ!'); return false;" novalidate>
@@ -283,7 +285,7 @@
     </form>
   </main>
 
- <footer class="footer">
+  <footer class="footer">
   <div class="footer-container">
     <!-- Giới thiệu -->
     <div class="footer-section about">
@@ -334,37 +336,6 @@
       </div>
     </div>
 
-    <!-- Form đăng ký nhận tin -->
-    <div class="footer-section newsletter">
-      <h3>Đăng ký nhận tin</h3>
-      <p>Nhận ưu đãi & cập nhật mới nhất từ chúng tôi</p>
-      <form action="#" method="post" class="newsletter-form">
-        <input
-          type="email"
-          name="email"
-          placeholder="Nhập email của bạn"
-          required
-          aria-label="Nhập email nhận tin"
-        />
-        <button type="submit" aria-label="Đăng ký nhận tin">Đăng ký</button>
-      </form>
-    </div>
-
-    <!-- Form tìm kiếm sản phẩm -->
-    <div class="footer-section search-product">
-      <h3>Tìm sản phẩm</h3>
-      <form action="products.html" method="GET" class="search-form">
-        <input
-          type="text"
-          name="q"
-          placeholder="Nhập tên sản phẩm..."
-          aria-label="Tìm sản phẩm"
-          required
-        />
-        <button type="submit" aria-label="Tìm kiếm sản phẩm">
-          🔍
-        </button>
-      </form>
-    </div>
-  </div>
-</footer>
+   
+    
+  
