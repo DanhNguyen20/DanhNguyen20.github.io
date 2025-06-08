@@ -14,8 +14,8 @@
       font-family: 'Montserrat', sans-serif;
     }
     body {
-      background: #f0f2f5;
-      color: #222;
+      background: #0f172a; /* Nền xanh đen full */
+      color: #cbd5e1; /* Màu chữ sáng trên nền tối */
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
@@ -23,15 +23,19 @@
       padding: 30px 20px;
     }
     a {
-      color: inherit;
+      color: #38bdf8; /* Màu link xanh sáng */
       text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #60a5fa;
     }
 
     /* Header */
     header {
       background-color: #0f172a;
       padding: 15px 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -63,7 +67,7 @@
       white-space: nowrap;
     }
     nav ul li a {
-      color: #e2e8f0;
+      color: #cbd5e1;
       font-weight: 600;
       padding: 6px 10px;
       border-radius: 4px;
@@ -77,7 +81,7 @@
     }
     .cart {
       font-size: 1.3rem;
-      color: #fff;
+      color: #cbd5e1;
       position: relative;
       white-space: nowrap;
       cursor: pointer;
@@ -100,164 +104,57 @@
       justify-content: center;
     }
 
-    /* Buttons */
-    .btn-primary {
-      background-color: #38bdf8;
-      color: #0f172a;
-      font-weight: bold;
-      padding: 12px 28px;
-      border-radius: 6px;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      user-select: none;
-    }
-    .btn-primary:hover {
-      background-color: #0ea5e9;
-    }
-
-    /* Search form */
-    .search-form {
-      max-width: 1100px;
-      margin: 30px auto 0;
-      padding: 0 20px;
-      display: flex;
-      justify-content: center;
-    }
-    .search-form input[type="text"] {
-      width: 100%;
-      max-width: 400px;
-      padding: 10px 15px;
-      border-radius: 6px 0 0 6px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      outline: none;
-      user-select: none;
-    }
-    .search-form button {
-      padding: 10px 20px;
-      border: none;
-      background-color: #38bdf8;
-      color: #0f172a;
-      font-weight: bold;
-      border-radius: 0 6px 6px 0;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      user-select: none;
-    }
-    .search-form button:hover {
-      background-color: #0ea5e9;
-    }
-
-    /* Products */
-    .products {
-      max-width: 1100px;
-      margin: 30px auto 80px;
-      padding: 0 20px;
-      flex-grow: 1;
-    }
-    .products h2 {
-      text-align: center;
-      font-size: 2.4rem;
-      margin-bottom: 40px;
-      color: #0f172a;
-      user-select: none;
-    }
-    .product-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* mỗi hàng 2 sản phẩm */
-      gap: 30px;
-      align-items: stretch;
-    }
-    .product-list > .product-card {
-      height: 100%;
-    }
-    .product-card {
-      background-color: #fff;
+    /* Main giới thiệu */
+    main {
+      max-width: 960px;
+      margin: 40px auto;
+      background: #1e293b; /* nền phần chính hơi sáng hơn nền body */
+      padding: 40px 40px 60px;
       border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.3s ease;
-      min-height: 100%; /* sửa từ 460px thành 100% */
-      height: 100%; /* thêm để mỗi thẻ co giãn theo dòng */
-    }
-    .image-container {
-      width: 300px;
-      height: 300px;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid #ccc; /* Tùy chọn: để thấy viền */
-    }
-    .image-container img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-    .product-info h3 {
-      margin-bottom: 10px;
-      font-weight: 700;
-      color: #0f172a;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
       user-select: none;
+      color: #cbd5e1;
     }
-    .product-info p {
-      flex-grow: 1;
-      font-size: 1rem;
-      color: #475569;
-      margin-bottom: 10px;
-      user-select: none;
-    }
-    .product-price {
-      font-size: 1.2rem;
-      font-weight: 700;
+    main h1 {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
       color: #38bdf8;
-      margin-bottom: 18px;
-      user-select: none;
-    }
-    .product-info a.btn-details {
-      background-color: #0f172a;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 6px;
-      display: inline-block;
-      font-weight: 600;
       text-align: center;
-      user-select: none;
-      transition: background-color 0.3s;
     }
-    .product-info a.btn-details:hover {
-      background-color: #1e293b;
+    main h2 {
+      font-size: 2rem;
+      color: #38bdf8;
+      border-bottom: 3px solid #38bdf8;
+      padding-bottom: 8px;
+      margin-top: 45px;
+      margin-bottom: 20px;
     }
-
-    /* Pagination */
-    .pagination {
-      margin: 40px 0 0;
-      text-align: center;
-      user-select: none;
+    main p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+      margin-bottom: 20px;
     }
-    .pagination button {
-      background-color: #38bdf8;
-      border: none;
-      color: #0f172a;
-      font-weight: 700;
-      margin: 0 6px;
-      padding: 10px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      user-select: none;
+    main .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
     }
-    .pagination button:hover:not(:disabled) {
-      background-color: #0ea5e9;
+    main .feature-item {
+      background: #0f172a;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      transition: box-shadow 0.3s ease;
+      color: #cbd5e1;
     }
-    .pagination button:disabled {
-      background-color: #94a3b8;
-      cursor: not-allowed;
-      color: #f0f2f5;
+    main .feature-item:hover {
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.7);
+    }
+    main .feature-item h3 {
+      margin-bottom: 10px;
+      color: #38bdf8;
     }
 
     /* Footer */
@@ -271,6 +168,12 @@
       margin-top: auto;
       user-select: none;
     }
+    footer.footer a {
+      color: #38bdf8;
+    }
+    footer.footer a:hover {
+      color: #60a5fa;
+    }
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -281,84 +184,30 @@
       .header-content {
         justify-content: center;
       }
-      .product-list {
-        grid-template-columns: 1fr; /* 1 sp 1 hàng trên thiết bị nhỏ */
+      main {
+        padding: 30px 20px 40px;
+        margin: 30px 10px;
       }
-      .search-form {
-        justify-content: center;
+      main .features {
+        grid-template-columns: 1fr;
       }
     }
-    
-    /* Thêm style riêng cho trang giới thiệu */
-    main {
-      max-width: 960px;
-      margin: 40px auto;
-      background: #fff;
-      padding: 40px 40px 60px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      user-select: none;
-    }
-    main h1 {
-      font-size: 2.8rem;
-      margin-bottom: 25px;
-      color: #0f172a;
-      text-align: center;
-    }
-    main h2 {
-      font-size: 2rem;
-      color: #0f172a;
-      border-bottom: 3px solid #38bdf8;
-      padding-bottom: 8px;
-      margin-top: 45px;
-      margin-bottom: 20px;
-    }
-    main p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #475569;
-      margin-bottom: 20px;
-    }
-    main .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 20px;
-    }
-    main .feature-item {
-      background: #f8fafc;
-      padding: 20px 25px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-      transition: box-shadow 0.3s ease;
-    }
-    main .feature-item:hover {
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-    }
-    main .feature-item h3 {
-      margin-bottom: 10px;
-      color: #1e293b;
-    }
-
   </style>
 </head>
 <body>
 
   <header>
-    <div class="container">
-      <div class="header-content">
-        <div class="logo">Thành Danh Tech</div>
-        <nav>
-          <ul>
-            <li><a href="trangchu.html">Trang chủ</a></li>
-            <li><a href="sanpham.html">Sản phẩm</a></li>
-            <li><a href="giamgia.html">Giảm giá</a></li>
-            <li><a href="gioithieu.html" class="active">Giới thiệu</a></li>
-            <li><a href="lienhe.html">Liên hệ</a></li>
-          </ul>
-        </nav>
-        <div class="cart" title="Giỏ hàng">&#128722;</div>
-      </div>
+    <div class="container header-content">
+      <h1 class="logo">Thành Danh Tech</h1>
+      <nav>
+        <ul>
+          <li><a href="trangchu.html">Trang chủ</a></li>
+          <li><a href="sanpham.html">Sản phẩm</a></li>
+          <li><a href="gioithieu.html" class="active">Giới thiệu</a></li>
+          <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <div class="cart" title="Giỏ hàng">&#128722;</div>
     </div>
   </header>
 
@@ -393,16 +242,15 @@
         </p>
       </div>
       <div class="feature-item">
-        <h3>Chính sách bảo hành &
-hậu mãi ưu việt</h3>
-<p>
-Cam kết bảo hành theo tiêu chuẩn quốc tế, dịch vụ hậu mãi tận tâm, tạo sự an tâm tuyệt đối cho khách hàng khi sử dụng sản phẩm và dịch vụ của chúng tôi.
-</p>
-</div>
-</div>
+        <h3>Chính sách bảo hành & hậu mãi ưu việt</h3>
+        <p>
+          Cam kết bảo hành theo tiêu chuẩn quốc tế, dịch vụ hậu mãi tận tâm, tạo sự an tâm tuyệt đối cho khách hàng khi sử dụng sản phẩm và dịch vụ của chúng tôi.
+        </p>
+      </div>
+    </div>
+  </main>
 
-</main><
-<footer class="footer">
+  <footer class="footer">
   <div class="footer-container">
     <!-- Giới thiệu -->
     <div class="footer-section about">
@@ -469,21 +317,6 @@ Cam kết bảo hành theo tiêu chuẩn quốc tế, dịch vụ hậu mãi t�
       </form>
     </div>
 
-    <!-- Form tìm kiếm sản phẩm -->
-    <div class="footer-section search-product">
-      <h3>Tìm sản phẩm</h3>
-      <form action="products.html" method="GET" class="search-form">
-        <input
-          type="text"
-          name="q"
-          placeholder="Nhập tên sản phẩm..."
-          aria-label="Tìm sản phẩm"
-          required
-        />
-        <button type="submit" aria-label="Tìm kiếm sản phẩm">
-          🔍
-        </button>
-      </form>
-    </div>
-  </div>
-</footer>
+  
+</body>
+</html>
