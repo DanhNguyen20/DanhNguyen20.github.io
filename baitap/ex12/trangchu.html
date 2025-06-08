@@ -428,13 +428,13 @@
   </style>
 </head>
 <body>
-  <header>
+  <header id="header">
   <div class="logo">Thành Danh Tech</div>
 
   <!-- Thanh tìm kiếm -->
   <div class="search-bar">
-    <input type="text" placeholder="Tìm kiếm sản phẩm..." />
-    <button><i class="fas fa-search"></i></button>
+    <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." />
+    <button id="searchBtn"><i class="fas fa-search"></i></button>
   </div>
 
   <!-- Menu hamburger -->
@@ -450,7 +450,7 @@
     <a href="#products">Sản phẩm</a>
     <a href="#about">Giới thiệu</a>
     <a href="#contact">Liên hệ</a>
-  </nav>
+  </mobileMenu>
 </header>
 
 
@@ -677,9 +677,18 @@
   window.addEventListener('resize', updateSlider);
 
   updateSlider();
-</script>
-</body>
 <script>
+  // Header shadow on scroll
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile menu toggle
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
 
@@ -696,7 +705,28 @@
       mobileMenu.classList.remove('active');
     });
   });
+
+  // Search functionality (basic)
+  const searchBtn = document.getElementById('searchBtn');
+  const searchInput = document.getElementById('searchInput');
+  const productGrid = document.getElementById('productGrid');
+
+  if (searchBtn && searchInput && productGrid) {
+    searchBtn.addEventListener('click', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      const products = productGrid.querySelectorAll('.product-card');
+      products.forEach(product => {
+        const title = product.querySelector('h3').textContent.toLowerCase();
+        if (!query || title.includes(query)) {
+          product.style.display = 'flex';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    });
+  }
 </script>
+
 
 </body>
 </html>
