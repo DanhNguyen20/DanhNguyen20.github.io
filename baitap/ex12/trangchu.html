@@ -428,24 +428,31 @@
   </style>
 </head>
 <body>
-  <header id="header">
-    <a href="#" class="logo">Thành Danh Tech</a>
-    <nav id="nav-menu">
-      <a href="trangchu.html"class="active">Trang chủ</a>
-      <a href="sanpham.html">Sản phẩm</a>
-      <a href="gioithieu.html">Giới Thiệu</a>
-      <a href="lienhe.html">Liên hệ</a>
-      <div class="search-bar">
-        <input id="searchInput" type="text" placeholder="Tìm sản phẩm..." />
-        <button id="searchBtn" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
-      </div>
-    </nav>
-    <div class="hamburger" id="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </header>
+  <header>
+  <div class="logo">Thành Danh Tech</div>
+
+  <!-- Thanh tìm kiếm -->
+  <div class="search-bar">
+    <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+    <button><i class="fas fa-search"></i></button>
+  </div>
+
+  <!-- Menu hamburger -->
+  <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Menu chính -->
+  <nav id="mobileMenu">
+    <a href="#">Trang chủ</a>
+    <a href="#products">Sản phẩm</a>
+    <a href="#about">Giới thiệu</a>
+    <a href="#contact">Liên hệ</a>
+  </nav>
+</header>
+
 
   <section class="banner">
     <div class="banner-content">
@@ -672,6 +679,24 @@
   updateSlider();
 </script>
 </body>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+
+  // Tự động đóng menu khi chọn một mục
+  const menuLinks = mobileMenu.querySelectorAll('a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    });
+  });
+</script>
 
 </body>
 </html>
