@@ -3,432 +3,534 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cửa hàng điện tử - Trang Chủ</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Thành Danh Tech - Cửa hàng công nghệ cao cấp</title>
+  <meta name="description" content="Thành Danh Tech - Cửa hàng công nghệ cao cấp, sản phẩm chính hãng, giá tốt, giao hàng nhanh." />
+  
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+
   <style>
-    /* Reset */
+    /* Reset & base */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
     body {
-      background: #f0f2f5;
-      color: #222;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f172a; /* dark navy */
+      color: #e0e7ff; /* light periwinkle */
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
+
     a {
-      color: inherit;
+      color: #3b82f6; /* bright blue */
       text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #60a5fa; /* lighter blue */
     }
 
     /* Header */
     header {
-      background-color: #0f172a;
-      padding: 15px 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .header-content {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #1e293b; /* dark slate */
+      padding: 0.8rem 2rem;
+      box-shadow: none;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+      align-items: center;
+      z-index: 1000;
+      transition: box-shadow 0.3s ease;
+      gap: 1rem;
     }
+    header.scrolled {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      background: #111827; /* darker on scroll */
+    }
+
     .logo {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #38bdf8;
-      letter-spacing: 1px;
-      white-space: nowrap;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      white-space: nowrap;
-    }
-    nav ul li a {
-      color: #e2e8f0;
-      font-weight: 600;
-      padding: 6px 10px;
-    }
-    nav ul li a:hover,
-    nav ul li a.active {
-      color: #38bdf8;
-    }
-    .cart {
-      font-size: 1.3rem;
-      color: #fff;
-      position: relative;
-      white-space: nowrap;
-    }
-    .cart::after {
-      content: "3";
-      position: absolute;
-      top: -6px;
-      right: -10px;
-      background: #38bdf8;
-      color: #0f172a;
+      font-size: 1.8rem;
       font-weight: 700;
-      font-size: 0.7rem;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
+      color: #3b82f6;
+      letter-spacing: 1px;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    nav {
       display: flex;
+      gap: 1.8rem;
       align-items: center;
-      justify-content: center;
+      flex-wrap: nowrap;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      white-space: nowrap;
     }
 
-    /* Buttons */
-    .btn-primary {
-      background-color: #38bdf8;
-      color: #0f172a;
-      font-weight: bold;
-      padding: 12px 28px;
-      border-radius: 6px;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .btn-primary:hover {
-      background-color: #0ea5e9;
-    }
-
-    /* Form tìm kiếm trong header */
-    .search-product {
-      display: flex;
-      gap: 8px;
-      flex-grow: 1;
-      max-width: 400px;
-    }
-    .search-input {
-      flex: 1;
-      padding: 8px 12px;
-      border: 2px solid #38bdf8;
-      border-radius: 6px;
-      font-size: 1rem;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-    .search-input:focus {
-      border-color: #0ea5e9;
-    }
-    .search-product button.btn-primary {
-      padding: 8px 16px;
-      font-size: 1rem;
-    }
-
-    /* Hero */
-    .hero {
-      background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80');
-      background-size: cover;
-      background-position: center;
-      height: 420px;
-      border-radius: 12px;
-      margin: 40px auto;
-      max-width: 1100px;
-      color: white;
+    /* Search bar */
+    .search-bar {
       position: relative;
+      width: 220px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
-    .hero::before {
-      content: "";
+    .search-bar input[type="text"] {
+      width: 100%;
+      padding: 0.4rem 2.5rem 0.4rem 0.8rem;
+      border-radius: 20px;
+      border: none;
+      font-size: 0.9rem;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+    .search-bar input[type="text"]:focus {
+      box-shadow: 0 0 8px #3b82f6;
+    }
+    .search-bar button {
+      position: absolute;
+      right: 5px;
+      background: transparent;
+      border: none;
+      color: #3b82f6;
+      cursor: pointer;
+      font-size: 1.1rem;
+      outline: none;
+    }
+
+    /* Hamburger menu (mobile) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: #3b82f6;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      nav {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background: #1e293b;
+        flex-direction: column;
+        width: 200px;
+        padding: 1.5rem;
+        border-radius: 0 0 0 10px;
+        box-shadow: -4px 4px 10px rgba(0,0,0,0.6);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        gap: 1rem;
+      }
+      nav.active {
+        transform: translateX(0);
+      }
+      .hamburger {
+        display: flex;
+      }
+      .search-bar {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      .search-bar input[type="text"] {
+        width: 100%;
+      }
+    }
+
+    /* Banner */
+    .banner {
+      margin-top: 60px; /* header height */
+      background: url('https://cdn.tgdd.vn/2023/10/banner/IP15-720-220-720x220-2.png') no-repeat center center/cover;
+      height: 350px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .banner::after {
+      content: '';
       position: absolute;
       inset: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 12px;
-      z-index: 0;
+      background: rgba(0,0,0,0.5);
+      pointer-events: none;
     }
-    .hero-content {
+    .banner-content {
       position: relative;
       z-index: 1;
+      color: #bfdbfe;
+      max-width: 600px;
     }
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-      font-weight: 800;
+    .banner-content h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
     }
-    .hero-content p {
+    .banner-content p {
       font-size: 1.2rem;
-      margin-bottom: 25px;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    }
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 0.7rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 0 10px #3b82f6;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse 2s infinite;
+      user-select: none;
+    }
+    .btn-primary:hover {
+      background: #2563eb;
+      box-shadow: 0 0 20px #2563eb;
+    }
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 10px #3b82f6;
+      }
+      50% {
+        box-shadow: 0 0 20px #60a5fa;
+      }
     }
 
-    /* Products */
+    /* Products Section */
     .products {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 0 20px;
+      max-width: 1200px;
+      margin: 3rem auto 4rem;
+      padding: 0 1rem;
+      width: 100%;
     }
     .products h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
       text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-      color: #0f172a;
+      color: #93c5fd;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.7);
     }
-    .product-list {
+    .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
     }
     .product-card {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease;
-  min-height: 420px; /* thêm dòng này */
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.product-card img {
-  width: 100%;
-  height: 250px; /* Tăng chiều cao ảnh */
-  object-fit: cover;
-  border-bottom: 1px solid #e2e8f0; /* Thêm viền nhẹ giữa ảnh và nội dung */
-}
-
-
-    .product-info {
-      padding: 16px 18px;
-      flex-grow: 1;
+      background: #1e293b;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.7);
     }
     .product-card img {
-  width: 100%;
-  height: 250px; /* Tăng chiều cao ảnh */
-  object-fit: cover;
-  border-bottom: 1px solid #e2e8f0; /* Thêm viền nhẹ giữa ảnh và nội dung */
-}
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 2px solid #3b82f6;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+    .product-info {
+      padding: 1rem 1.2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-info h3 {
+      color: #bfdbfe;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .product-info p {
+      color: #60a5fa;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: auto;
+    }
 
-   .product-card img {
-  width: 50%;
-  height: 220px; /* Tăng chiều cao ảnh */
-  object-fit: cover;
-  border-bottom: 1px solid #e2e8f0; /* Thêm viền nhẹ giữa ảnh và nội dung */
-}
+    /* See More Button */
+    .see-more-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
 
-    .product-info a.btn-details {
-      background-color: #0f172a;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 6px;
-      display: inline-block;
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #3b82f6;
+      color: #3b82f6;
+      padding: 0.7rem 2rem;
       font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    .btn-secondary:hover {
+      background: #3b82f6;
+      color: white;
+    }
+
+    /* Customer Reviews Section */
+    .reviews {
+      max-width: 1000px;
+      margin: 3rem auto 4rem;
+      padding: 0 1rem;
+      color: #dbeafe;
+    }
+    .reviews h2 {
       text-align: center;
-    }
-    .product-info a.btn-details:hover {
-      background-color: #1e293b;
-    }
-
-    /* Form tìm kiếm sản phẩm bên dưới Hero */
-    .search-product-main {
-      max-width: 400px;
-      margin: 0 auto 30px auto;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    /* Features */
-    .why-choose {
-      background-color: white;
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 50px 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-    }
-    .why-choose h2 {
+      margin-bottom: 2rem;
       font-size: 2rem;
-      text-align: center;
-      color: #0f172a;
-      margin-bottom: 30px;
+      color: #60a5fa;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
     }
-    .features {
+    .review-slider {
+      position: relative;
+      overflow: hidden;
+    }
+    .review-track {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 20px;
+      transition: transform 0.5s ease-in-out;
+      gap: 1.5rem;
     }
-    .feature-item {
-      flex: 1 1 220px;
-      text-align: center;
-      padding: 10px;
+    .review-card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+      flex: 0 0 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .feature-icon {
-      font-size: 3rem;
-      color: #38bdf8;
-      margin-bottom: 12px;
+    .review-text {
+      font-style: italic;
+      margin-bottom: 1rem;
+      line-height: 1.4;
     }
-    .feature-item h3 {
-      font-size: 1.2rem;
-      color: #0f172a;
-      margin-bottom: 8px;
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
     }
-    .feature-item p {
-      font-size: 1rem;
-      color: #475569;
+    .author-photo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #3b82f6;
+    }
+    .author-info {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.9rem;
+    }
+    .author-name {
+      font-weight: 700;
+      color: #bfdbfe;
+    }
+    .author-position {
+      color: #93c5fd;
+    }
+
+    /* Review nav buttons */
+    .review-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .review-nav button {
+      background: rgba(59, 130, 246, 0.7);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      pointer-events: all;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    .review-nav button:hover {
+      background: #2563eb;
     }
 
     /* Footer */
-    footer.footer {
-      background-color: #0f172a;
+    footer {
+      background: #1e293b;
       color: #94a3b8;
-      padding: 30px 20px;
       text-align: center;
+      padding: 1rem;
       font-size: 0.9rem;
-      border-radius: 0 0 12px 12px;
-      margin-top: 80px;
+      margin-top: auto;
+      user-select: none;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2rem;
-      }
-      .features {
-        flex-direction: column;
-        align-items: center;
-      }
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .header-content {
-        justify-content: center;
-      }
-      .search-product {
-        max-width: 100%;
-        order: 3;
-      }
-    }
-    @media (max-width: 480px) {
-      .hero {
-        height: 320px;
-      }
-      .hero-content h1 {
-        font-size: 1.5rem;
-      }
-      .product-list {
-        grid-template-columns: 1fr;
-      }
-      nav ul {
-        gap: 10px;
-      }
-      .cart {
-        order: 4;
-      }
-    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container header-content">
-      <div class="logo">Thành Danh Tech</div>
-
-      <form class="search-product" action="#" method="get" onsubmit="return onSearch(event)">
-        <input type="text" name="q" placeholder="Tìm kiếm sản phẩm..." class="search-input" />
-        <button type="submit" class="btn-primary">Tìm kiếm</button>
-      </form>
-
-      <nav>
-        <ul>
-          <li><a href="trangchu.html" class="active">Trang Chủ</a></li>
-          <li><a href="sanpham.html">Sản phẩm</a></li>
-          <li><a href="giamgia.html">Giảm Giá</a></li>
-          <li><a href="gioithieu.html">Giới thiệu</a></li>
-          <li><a href="lienhe.html">Liên hệ</a></li>
-        </ul>
-      </nav>
-      <a href="#" class="cart" title="Giỏ hàng">&#128722;</a>
+  <header id="header">
+    <a href="#" class="logo">Thành Danh Tech</a>
+    <nav id="nav-menu">
+      <a href="trangchu.html"class="active">Trang chủ</a>
+      <a href="sanpham.html">Sản phẩm</a>
+      <a href="gioithieu.html">Giới Thiệu</a>
+      <a href="lienhe.html">Liên hệ</a>
+      <div class="search-bar">
+        <input id="searchInput" type="text" placeholder="Tìm sản phẩm..." />
+        <button id="searchBtn" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
+      </div>
+    </nav>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Mua Sắm Điện Tử Thông Minh</h1>
-      <p>Chọn sản phẩm chất lượng, giá tốt nhất</p>
-      <button class="btn-primary">Mua Ngay</button>
+  <section class="banner">
+    <div class="banner-content">
+      <h1>Chào mừng đến với Thành Danh Tech</h1>
+      <p>Cửa hàng công nghệ cao cấp, uy tín và chất lượng</p>
+      <button class="btn-primary">Khám phá ngay</button>
     </div>
   </section>
 
   <section class="products">
-    <h2>Sản Phẩm Nổi Bật</h2>
-    <form class="search-product-main" action="#" method="get" onsubmit="return onSearch(event)">
-          <button type="submit" class="btn-primary">Xem Thêm</button>
+    <h2>Sản phẩm nổi bật</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- Các sản phẩm mẫu -->
+      <div class="product-card">
+        <img src="data:image/jpeg;base64,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" alt="iPhone 15 Pro" />
+        <div class="product-info">
+          <h3>iPhone 15 Pro</h3>
+          <p>31,990,000₫</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="data:image/jpeg;base64,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" />
+        <div class="product-info">
+          <h3>Samsung Galaxy S23 Ultra</h3>
+          <p>24,990,000₫</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="data:image/jpeg;base64,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" alt="Xiaomi 13 Pro" />
+        <div class="product-info">
+          <h3>Xiaomi 13 Pro</h3>
+          <p>19,990,000₫</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="data:image/jpeg;base64,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" alt="iPhone 14" />
+        <div class="product-info">
+          <h3>iPhone 14 Plus</h3>
+          <p>18,490,000₫</p>
+        </div>
+      </div>
+    </div>
+  <div class="see-more-container">
+  <a href="sanpham.html" class="btn-see-more">Xem thêm sản phẩm</a>
+</div>
+>
 
-    </form>
-    <div class="product-list">
-      <div class="product-card">
-        <img src="data:image/jpeg;base64,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" alt="Laptop HP" />
-        <div class="product-info">
-          <h3>Laptop HP Pavilion</h3>
-          <p class="price">17.590.000 VNĐ</p>
-          <a href="#" class="btn-details">Xem Chi Tiết</a>
+>
+  </section>
+
+  <!-- Phần đánh giá khách hàng -->
+  <section class="reviews">
+    <h2>Đánh giá khách hàng</h2>
+    <div class="review-slider" id="reviewSlider">
+      <div class="review-track" id="reviewTrack">
+        <div class="review-card">
+          <p class="review-text">"Sản phẩm rất chất lượng, giao hàng nhanh và dịch vụ khách hàng tuyệt vời!"</p>
+          <div class="review-author">
+            <img class="author-photo" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Khách hàng 1" />
+            <div class="author-info">
+              <span class="author-name">Nguyễn Thị Hoa</span>
+              <span class="author-position">Khách hàng thân thiết</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"Thành Danh Tech luôn có những sản phẩm công nghệ mới nhất và giá cả hợp lý."</p>
+          <div class="review-author">
+            <img class="author-photo" src="https://randomuser.me/api/portraits/men/35.jpg" alt="Khách hàng 2" />
+            <div class="author-info">
+              <span class="author-name">Trần Văn Nam</span>
+              <span class="author-position">Người dùng lâu năm</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <p class="review-text">"Dịch vụ tư vấn nhiệt tình, giúp tôi chọn được sản phẩm phù hợp."</p>
+          <div class="review-author">
+            <img class="author-photo" src="https://randomuser.me/api/portraits/women/21.jpg" alt="Khách hàng 3" />
+            <div class="author-info">
+              <span class="author-name">Lê Thị Mai</span>
+              <span class="author-position">Khách hàng mới</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="product-card">
-        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRnz006QYeOjh7FnRbmiCoOD5Ixp2zeiAxGHL_FieVxBdCON9U25bvMw0_VYJejnvUOSGx0FddCHHwyfeP9liPWCbL858ll2S1bXi9P7mr6bN_nrz8oKUBsKxF1duLGv_pK2fSljMqW&usqp=CAc" alt="Điện thoại Samsung" />
-        <div class="product-info">
-          <h3>Điện Thoại Iphone14 Pro MMax</h3>
-          <p class="price">15.290.000 VNĐ</p>
-          <a href="#" class="btn-details">Xem Chi Tiết</a>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTuwzyRTkAJvT6OwD1jPS1xJFYrG4Ujb8hz_V2q9TgqlpYI0MWGOjXQFYg9lXm3hscpjtV9XTYAP0PX50Y2O2pAGIyDkazRORtP1N9VC6Cc6JC8eRRQoR7kMjMy_PQmlpmM72jHFKA&usqp=CAc" alt="Tai nghe Sony" />
-        <div class="product-info">
-          <h3>Tai nghe Sony</h3>
-          <p class="price">1.200.000 VNĐ</p>
-          <a href="#" class="btn-details">Xem Chi Tiết</a>
-        </div>
+      <div class="review-nav">
+        <button id="prevReview" aria-label="Xem đánh giá trước"><i class="fas fa-chevron-left"></i></button>
+        <button id="nextReview" aria-label="Xem đánh giá tiếp theo"><i class="fas fa-chevron-right"></i></button>
       </div>
     </div>
   </section>
 
-  <section class="why-choose">
-    <h2>Tại sao chọn Điện Tử Shop?</h2>
-    <div class="features">
-      <div class="feature-item">
-        <div class="feature-icon">⚡</div>
-        <h3>Giao hàng nhanh</h3>
-        <p>Đảm bảo giao hàng nhanh chóng, đúng hẹn.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">💎</div>
-        <h3>Sản phẩm chất lượng</h3>
-        <p>Chọn lọc kỹ lưỡng, chỉ bán hàng chính hãng.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">💰</div>
-        <h3>Giá cả cạnh tranh</h3>
-        <p>Luôn có giá tốt nhất trên thị trường.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🤝</div>
-        <h3>Hỗ trợ khách hàng</h3>
-        <p>Đội ngũ chăm sóc nhiệt tình, tận tâm.</p>
-      </div>
-    </div>
-  </section>
-<footer class="footer">
+  <footer class="footer">
   <div class="footer-container">
     <!-- Giới thiệu -->
     <div class="footer-section about">
@@ -495,20 +597,68 @@
       </form>
     </div>
 
-    <!-- Form tìm kiếm sản phẩm -->
-    <div class="footer-section search-product">
-      <h3>Tìm sản phẩm</h3>
-      <form action="products.html" method="GET" class="search-form">
-        <input
-          type="text"
-          name="q"
-          placeholder="Nhập tên sản phẩm..."
-          aria-label="Tìm sản phẩm"
-          required
-        />
-        <button type="submit" aria-label="Tìm kiếm sản phẩm">
-          🔍
-        </button>
-      </form>
-    </div>
-  </div>
+  <script>
+    // Header shadow on scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Search functionality (basic)
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+    const productGrid = document.getElementById('productGrid');
+
+    searchBtn.addEventListener('click', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      const products = productGrid.querySelectorAll('.product-card');
+      products.forEach(product => {
+        const title = product.querySelector('h3').textContent.toLowerCase();
+        if (!query || title.includes(query)) {
+          product.style.display = 'flex';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    });
+
+    // Review slider
+    const reviewTrack = document.getElementById('reviewTrack');
+    const prevReviewBtn = document.getElementById('prevReview');
+    const nextReviewBtn = document.getElementById('nextReview');
+    const reviewCards = reviewTrack.querySelectorAll('.review-card');
+    const reviewWidth = reviewCards[0].offsetWidth + 24; // width + gap (1.5rem ~ 24px)
+    let currentIndex = 0;
+
+    function updateReviewPosition() {
+      reviewTrack.style.transform = `translateX(-${currentIndex * reviewWidth}px)`;
+    }
+
+    prevReviewBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateReviewPosition();
+      }
+    });
+    nextReviewBtn.addEventListener('click', () => {
+      if (currentIndex < reviewCards.length - 1) {
+        currentIndex++;
+        updateReviewPosition();
+      }
+    });
+
+  </script>
+</body>
+</html>
